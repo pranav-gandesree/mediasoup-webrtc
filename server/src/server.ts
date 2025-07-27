@@ -1,7 +1,7 @@
 import express from 'express';
 import * as WebSocket from 'ws';
 import http from 'http';
-import { WsConnection } from './websocket/ws';
+import { WsConnection } from './lib/ws';
 
 
 const main = async() =>{

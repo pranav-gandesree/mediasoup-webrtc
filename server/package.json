@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index"
+     "dev": "cross-env DEBUG=mediasoup:* ts-node src/index"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +12,14 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "mediasoup": "^3.16.8",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "ws": "^8.18.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "@types/ws": "^8.18.1"
+    "@types/ws": "^8.18.1",
+    "cross-env": "^10.0.0"
   }
 }
