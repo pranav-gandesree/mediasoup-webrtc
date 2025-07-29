@@ -1,36 +1,25 @@
-import { main } from './server'
+import express from 'express';
+import { Server as SocketIOServer } from "socket.io";
+import http from 'http';
+import { SocketConnection } from './lib/signal'; 
 
-main()
+const main = async () => {
+  const app = express();
+  const httpServer = http.createServer(app);
 
+  const io = new SocketIOServer(httpServer, {
+    cors: {
+      origin: "*",
+      credentials: true,
+    },
+    path: "/mediasoup",
+  });
 
+  await SocketConnection(io);
 
+  httpServer.listen(8080, () => {
+    console.log("Server is running on http://localhost:8080");
+  });
+};
 
-
-
-
-
-
-
-// import express from 'express'
-// import { WebSocketServer } from 'ws'
-
-// const app = express()
-// const httpServer = app.listen(3483, ()=>{
-//     console.log("server is running on port 3483")
-// })
-
-// const wss = new WebSocketServer({ server: httpServer });
-
-// wss.on('connection', function connection(ws) {
-//   ws.on('error', console.error);
-
-//   ws.on('message', function message(data, isBinary) {
-//     wss.clients.forEach(function each(client) {
-//       if (client.readyState === WebSocket.OPEN) {
-//         client.send(data, { binary: isBinary });
-//       }
-//     });
-//   });
-
-//   ws.send('Hello! Message From Server!!');
-// });
+main();

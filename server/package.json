@@ -4,15 +4,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "dev": "cross-env DEBUG=mediasoup:* ts-node src/index"
+    "dev": "cross-env DEBUG=mediasoup:* ts-node src/index",
+    "develop": "ts-node src/index"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "mediasoup": "^3.16.8",
+    "socket.io": "^4.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "ws": "^8.18.3"

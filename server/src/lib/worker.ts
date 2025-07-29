@@ -23,6 +23,15 @@ const createWorker = async () =>{
         setTimeout(() => process.exit(1), 2000);
     });
 
+    // Ensure kind is 'audio' or 'video' as required by mediasoup's MediaKind type
+    const mediaCodecs = config.mediasoup.router.mediaCodes.map((codec: any) => ({
+        ...codec,
+        kind: codec.kind === 'audio' ? 'audio' : 'video'
+    }));
+    const mediasoupRouter = await worker.createRouter({ mediaCodecs });
+
+    return mediasoupRouter
+
 }
 
 export {createWorker}
